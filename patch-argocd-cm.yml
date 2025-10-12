@@ -1,0 +1,4 @@
+data:
+  # 注意：這裡的值是一整個 JSON 字串，引號和跳脫字元都很重要
+  repositories: >-
+    [{"url":"git@github.com:chchchuang/DevOps-playground.git","sshPrivateKeySecret":{"name":"argocd-image-updater-ssh-key","key":"sshPrivateKey"}}]
