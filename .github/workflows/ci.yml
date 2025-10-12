@@ -24,7 +24,7 @@ jobs:
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
           uv sync --locked
       - name: Run pytest
-        run: pytest
+        run: uv run pytest
       - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
