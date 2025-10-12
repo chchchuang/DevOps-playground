@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastapi-app
+  namespace: argocd
+  # --- ArgoCD Image Updater 的設定 ---
+  annotations:
+    # 啟用 image updater
+    argocd-image-updater.argoproj.io/image-list: myapp=underdog22a/devops-playground
+    # 更新策略：使用最新的 tag
+    argocd-image-updater.argoproj.io/myapp.update-strategy: latest
+    # 允許 image updater 將變更寫回 Git
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-ssh-key
+spec:
+  project: default
+  source:
+    # 【重要】請將 repoURL 替換成你自己的儲存庫 SSH URL
+    repoURL: git@github.com:chchchuang/DevOps-playground.git
+    targetRevision: HEAD
+    path: argocd # 指向存放 manifests 的資料夾
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
