@@ -6,6 +6,7 @@ app = FastAPI()
 
 @app.get("/", response_class=HTMLResponse)
 def home():
+    """home html page"""
     html_content = """
     <!DOCTYPE html>
     <html lang="en">
