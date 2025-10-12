@@ -2,8 +2,20 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
   # 這個設定會將您本機的 hostPort 埠口，映射到 kind 節點容器內的 containerPort 埠口
   extraPortMappings:
-  - containerPort: 30440 # <-- 這裡填入您服務的 NodePort
-    hostPort: 8000      # <-- 這裡填入您想在本機使用的埠口 (可以自訂)
+  - containerPort: 30080
+    hostPort: 80
     protocol: TCP
+  - containerPort: 30443
+    hostPort: 443
+    protocol: TCP
+
+- role: worker
+- role: worker
