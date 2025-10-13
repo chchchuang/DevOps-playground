@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: fastapi-app
-        image: underdog22a/devops-playground:latest_1
+        image: underdog22a/devops-playground:latest
         ports:
         - containerPort: 8000
