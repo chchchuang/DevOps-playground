@@ -6,6 +6,7 @@ app = FastAPI()
 
 @app.get("/", response_class=HTMLResponse)
 def home():
+    # test argocd image updater
     """home html page"""
     html_content = """
     <!DOCTYPE html>
