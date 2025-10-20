@@ -53,7 +53,7 @@ jobs:
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/devops-playground
           tags: |
-            type=semver,pattern={{version}}
+            type=semver,pattern={{raw}}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
       - name: Push Docker image
         uses: docker/build-push-action@v5
