@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-    pull_request:
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
       - main
 
 jobs:
@@ -44,11 +47,18 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Docker metadata
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/devops-playground
+          tags: |
+            type=semver,pattern={{version}}
+            type=raw,value=latest,enable=${{ github.ref == "refs/heads/main" }}
       - name: Push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/devops-playground:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/devops-playground:${{ github.sha }}
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
