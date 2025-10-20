@@ -12,7 +12,8 @@ metadata:
     # 更新策略：使用最新的 tag
     argocd-image-updater.argoproj.io/myapp.update-strategy: semver
     # 允許 image updater 將變更寫回 Git
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-repo-secret
+    argocd-image-updater.argoproj.io/write-back-method: git:argocd
+    argocd-image-updater.argoproj.io/git-creds: secret:argocd/argocd-repo-secret
 spec:
   project: default
   source:
