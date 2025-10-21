@@ -22,7 +22,7 @@ spec:
     # 【重要】請將 repoURL 替換成你自己的儲存庫 SSH URL
     repoURL: git@github.com:chchchuang/DevOps-playground.git
     targetRevision: HEAD
-    path: argocd # 指向存放 manifests 的資料夾
+    path: devops-playground # 指向存放 Helm chart 的資料夾
   destination:
     server: https://kubernetes.default.svc
     namespace: default
