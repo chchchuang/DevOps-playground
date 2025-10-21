@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fastapi-app
+  name: devops-playground
   namespace: argocd
   # --- ArgoCD Image Updater 的設定 ---
   annotations:
