@@ -56,6 +56,7 @@ jobs:
           tags: |
             type=semver,pattern={{raw}}
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/test' }}
       - name: Push Docker image
         uses: docker/build-push-action@v5
         with:
