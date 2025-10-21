@@ -5,3 +5,5 @@
 .python-version
 .vscode/
 .DS_Store
+*key*
+known_hosts

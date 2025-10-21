@@ -11,8 +11,8 @@ on:
       - main
 
 jobs:
-  Build:
-    name: Test & Build
+  Test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,17 +28,12 @@ jobs:
           uv sync --locked
       - name: Run pytest
         run: uv run pytest
-      - name: Build Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: false
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-playground:test
 
-  Push:
-    name: Push to Docker Hub
-    needs: Build
+  BuildAndPush:
+    name: Build & Push to Docker Hub
+    needs: Test
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

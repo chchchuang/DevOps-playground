@@ -1,0 +1,6 @@
+data:
+  repositories: |
+    - url: git@github.com:chchchuang/DevOps-playground.git
+      sshPrivateKeySecret:
+        name: argocd-repo-secret
+        key: sshPrivateKey
