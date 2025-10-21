@@ -33,7 +33,7 @@ jobs:
     name: Build & Push to Docker Hub
     needs: Test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
