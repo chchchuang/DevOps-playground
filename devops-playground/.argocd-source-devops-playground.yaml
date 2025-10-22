@@ -4,5 +4,5 @@ helm:
     value: underdog22a/devops-playground
     forcestring: true
   - name: image.tag
-    value: v1.0.4
+    value: v1.1.0
     forcestring: true
