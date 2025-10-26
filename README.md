@@ -57,8 +57,8 @@ DevOps-playground/
 
 **執行流程：**
 
-```mermaid
-開發者改碼 → 建立 PR → 自動測試 → 測試通過 → 合併到 main
+```
+開發者修改程式碼 → 建立 PR → 自動測試 → 測試通過 → 合併到 main
 ```
 
 1. **開發階段**：開發者建立新分支並修改程式碼
@@ -97,7 +97,7 @@ git push origin v1.1.0
 
 **執行流程：**
 
-```mermaid
+```
 Docker Hub 更新 → ArgoCD 偵測 → 更新 Manifests → Webhook 觸發 → ArgoCD 同步 → 部署完成
 ```
 
